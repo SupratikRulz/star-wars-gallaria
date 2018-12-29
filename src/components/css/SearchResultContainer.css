@@ -1,0 +1,7 @@
+.search-result-container {
+  margin-top: 50px;
+  height: 80vh;
+  overflow-y: scroll;
+  margin-left: auto;
+  margin-right: auto
+}

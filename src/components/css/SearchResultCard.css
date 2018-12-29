@@ -1,0 +1,49 @@
+.search-result-card {
+  margin-top: 10px;
+}
+
+.search-result-card-container {
+  background: #fff4e0;
+  color: #000044;
+  padding: 0px 0px;
+  border-radius: 3px;
+}
+
+.search-result-card-header {
+  cursor: pointer;
+  user-select: none;
+  padding: 10px 0px;
+  font-size: 1.25rem;
+  background: #fff4e0;
+}
+
+.details {
+  border-top: 1px solid #000044;
+  animation: slide-up 0.3s ease;
+  padding-bottom: 15px; 
+}
+
+.info-header {
+  margin-top: 5px;
+  font-size: 1.2rem;
+}
+
+.info {
+  margin-left: 10px;
+  text-align: left;
+}
+
+@keyframes slide-up {
+  0% {
+      opacity: 0;
+      height: 0;
+      transform: translateY(-10px);
+      /* transform: rotate(-10deg) translateX(100%) scale(0.1); */
+  }
+  100% {
+      opacity: 1;
+      height: 100%;
+      transform: translateY(0);
+      /* transform: rotate(0deg) translateX(0) scale(1); */
+  }
+}
