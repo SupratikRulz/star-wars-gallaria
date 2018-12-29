@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 
+import ListInfo from './ListInfo';
+
 import './css/SearchResultCard.css';
 
 export default class SearchResultCard extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+
+    this.mouseOverHandler = this.mouseOverHandler.bind(this);
+    this.mouseOutHandler = this.mouseOutHandler.bind(this);
+    this.clickHandler = this.clickHandler.bind(this);
+
     this.state = {
       expanded: false
     }
@@ -13,9 +20,9 @@ export default class SearchResultCard extends Component {
   render() {
     return (
       <div className='col-12 search-result-card'
-        onMouseOver={e => this.mouseOverHandler(e)}
-        onMouseOut={e => this.mouseOutHandler(e)} 
-        onClick={e => this.clickHandler(e)} 
+        onMouseOver={this.mouseOverHandler}
+        onMouseOut={this.mouseOutHandler} 
+        onClick={this.clickHandler} 
       >
         <div className='search-result-card-container row'>
           <div 
@@ -27,6 +34,20 @@ export default class SearchResultCard extends Component {
           {
             this.state.expanded &&
               <div className='col-12 details'>
+                <ListInfo
+                  headerName={'Sample Header'}
+                  displayFormat={'- Today\'s temperature is  $_temp, and humidity is $_humidity'}
+                  keysArr={['temp', 'humidity']}
+                  jsonArr={[{
+                    temp: '12',
+                    humidity: '46',
+                    xyz: 'sdsd'
+                  }, {
+                    temp: '23',
+                    humidity: '24',
+                    xyz: 'dsds'
+                  }]}
+                />
                 <div className='info-header'>
                   Basic Information:
                 </div>
