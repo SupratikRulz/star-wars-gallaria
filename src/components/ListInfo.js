@@ -4,8 +4,10 @@ import './css/ListInfo.css'
 
 export default class ListInfo extends Component {
   render() {
-    let {headerName, displayFormat, keysArr, jsonArr} = this.props;
-    return (
+    let {headerName, displayFormat, keysArr, jsonArr} = this.props,
+      dataPresent = jsonArr.length > 0;
+
+    return dataPresent && (
       <>
         <div className='info-header'>
           {headerName}

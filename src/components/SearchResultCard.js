@@ -4,6 +4,8 @@ import ListInfo from './ListInfo';
 
 import './css/SearchResultCard.css';
 
+import {service} from './../services/api';
+
 export default class SearchResultCard extends Component {
   constructor(props) {
     super(props);
@@ -13,99 +15,78 @@ export default class SearchResultCard extends Component {
     this.clickHandler = this.clickHandler.bind(this);
 
     this.state = {
-      expanded: false
+      expanded: false,
+      films: [],
+      vehicles: [],
+      starships: []
     }
   }
 
   render() {
+    let {
+      name,
+      birth_year,
+      gender,
+      height,
+      mass,
+      hair_color,
+      skin_color,
+      eye_color,
+      films,
+      vehicles,
+      starships
+    } = this.props;
     return (
-      <div className='col-12 search-result-card'
-        onMouseOver={this.mouseOverHandler}
-        onMouseOut={this.mouseOutHandler} 
-        onClick={this.clickHandler} 
-      >
-        <div className='search-result-card-container row'>
+      <div className='col-12 search-result-card'>
+        <div className='search-result-card-container row'
+          onMouseOver={this.mouseOverHandler}
+          onMouseOut={this.mouseOutHandler} 
+          onClick={this.clickHandler} 
+        >
           <div 
-            className='search-result-card-header col-12'
-            onClick={this.toggleExpand}  
-          >
-            Random Name
+            className='search-result-card-header col-12'>
+            { name }
           </div>
           {
             this.state.expanded &&
               <div className='col-12 details'>
-                <ListInfo
-                  headerName={'Sample Header'}
-                  displayFormat={'- Today\'s temperature is  $_temp, and humidity is $_humidity'}
-                  keysArr={['temp', 'humidity']}
-                  jsonArr={[{
-                    temp: '12',
-                    humidity: '46',
-                    xyz: 'sdsd'
-                  }, {
-                    temp: '23',
-                    humidity: '24',
-                    xyz: 'dsds'
-                  }]}
-                />
                 <div className='info-header'>
                   Basic Information:
                 </div>
                 <p className='info'>
-                  Birth Year: 
+                  Birth Year: {birth_year}
                   <br></br>
-                  Gender: 
+                  Gender: {gender}
                   <br></br>
-                  Height: 
+                  Height: {height}
                   <br></br>
-                  Mass: 
+                  Mass: {mass}
                   <br></br>
-                  Hair Color: 
+                  Hair Color: {hair_color}
                   <br></br>
-                  Skin Color: 
+                  Skin Color: {skin_color}
                   <br></br>
-                  Eye Color: 
+                  Eye Color: {eye_color}
                   <br></br>
                 </p>
-                <div className='info-header'>
-                  Films appeared in:
-                </div>
-                <div className='info'>
-                  1. The Empire Strikes Back released on props.releaseDate and directed by Irvin Kershner
-                  <br></br>
-                  2. The Empire Strikes Back released on props.releaseDate and directed by Irvin Kershner
-                  <br></br>
-                  3. The Empire Strikes Back released on props.releaseDate and directed by Irvin Kershner
-                  <br></br>
-                  4. The Empire Strikes Back released on props.releaseDate and directed by Irvin Kershner
-                  <br></br>
-                </div>
-                <div className='info-header'>
-                  Vehicles owned:
-                </div>
-                <div className='info'>
-                  1. props.vehicles.name with cargo capacity number
-                  <br></br>
-                  2. props.vehicles.name with cargo capacity number
-                  <br></br>
-                  3. props.vehicles.name with cargo capacity number
-                  <br></br>
-                  4. props.vehicles.name with cargo capacity number
-                  <br></br>
-                </div>
-                <div className='info-header'>
-                  Starship owned:
-                </div>
-                <div className='info'>
-                  1. props.vehicles.name with cargo capacity number
-                  <br></br>
-                  2. props.vehicles.name with cargo capacity number
-                  <br></br>
-                  3. props.vehicles.name with cargo capacity number
-                  <br></br>
-                  4. props.vehicles.name with cargo capacity number
-                  <br></br>
-                </div>
+                <ListInfo
+                  headerName={'Films appeared in:'}
+                  displayFormat={'- $_title released on $_release_date and directed by $_director'}
+                  keysArr={['title', 'release_date', 'director']}
+                  jsonArr={films}
+                />
+                <ListInfo
+                  headerName={'Vehicles Owned:'}
+                  displayFormat={'- $_name with cargo capacity $_cargo_capacity'}
+                  keysArr={['name', 'cargo_capacity']}
+                  jsonArr={vehicles}
+                />
+                <ListInfo
+                  headerName={'Starships Owned:'}
+                  displayFormat={'- $_name with cargo capacity $_cargo_capacity'}
+                  keysArr={['name', 'cargo_capacity']}
+                  jsonArr={starships}
+                />
               </div>
           }
         </div>
@@ -127,5 +108,6 @@ export default class SearchResultCard extends Component {
 
   clickHandler = e => {
     e.target.parentElement.style.transform = 'scale(1)';
+    this.setState({expanded: !this.state.expanded});
   }
 }
