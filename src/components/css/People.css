@@ -1,3 +1,8 @@
 .search-box-height {
   margin-top: 10vh;
 }
+
+.search-logo {
+  width: 100%;
+  height: auto;
+}

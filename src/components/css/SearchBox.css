@@ -3,7 +3,6 @@
   color: #ede68a;
   height: 250px;
   width: inherit;
-  /* margin-top: 30vh; */
   border-radius: 3px;
 }
 
@@ -20,10 +19,11 @@ input[type=text] {
   padding: 12px 12px;
   background-color: #404b69;
   color: #ede68a;
+  width: 50%;
 }
 
 input[type=text]:focus {
-  /* border: 5px solid #5fb9b0; */
+  border: 5px solid #5fb9b0;
   outline: none;
   /* background-color: #ede68a; */
   opacity: 1;

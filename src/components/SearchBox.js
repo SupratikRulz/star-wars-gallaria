@@ -27,7 +27,7 @@ export default class SearchBox extends Component {
   render() {
     return (
       <div className='search-box'>
-        <p className='search-title'>Hey fellas! You can search your favorite characters here!</p>
+        <p className='search-title'>Hey fellas! Search your favorite heros here.</p>
         <input
           type='text'
           placeholder='Search here...'
@@ -41,7 +41,6 @@ export default class SearchBox extends Component {
   }
 
   onChangeHandler = () => {
-    console.log('debounced')
     this.props.updateSearchKey(this.searchText.current.value);
   }
 }

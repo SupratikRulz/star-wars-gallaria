@@ -42,7 +42,7 @@ export default class People extends Component {
       <div className='container-fluid'>
         <div className='row'>
           <div className='col-4 search-box-height'>
-            <img src={logo} alt='Star Wars'/>
+            <img src={logo} alt='Star Wars' className='search-logo'/>
             <SearchBox updateSearchKey={this.updateSearchKey}/>
           </div>
           <div className='col-8'>
