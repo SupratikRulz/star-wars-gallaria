@@ -1,5 +1,7 @@
 import debounce from './debounce';
+import deepCopy from './deepcopy';
 
 export {
-  debounce
+  debounce,
+  deepCopy
 };
