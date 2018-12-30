@@ -1,0 +1,19 @@
+.description {
+  text-align: justify;
+  padding: 40px;
+  font-size: 1.2rem;
+}
+
+.about {
+  margin-top: 10px;
+  font-size: 1.4rem;
+  text-decoration: underline;
+  color: #ede68a;
+  user-select: none;
+}
+
+.about-project {
+  text-align: justify;
+  font-size: 1.2rem;
+  padding: 0px 40px;
+}

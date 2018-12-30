@@ -25,19 +25,20 @@ export default class People extends Component {
       .get(this.state.fetchURI)
       .then(async _data => {
         let infoObj = _data;
-        let characters = [...infoObj.results];
-        while (infoObj.next) {
-          infoObj = await service.get(infoObj.next);
-          characters = [...characters, ...infoObj.results];
+        if (infoObj) {
+          let characters = [...infoObj.results];
+          while (infoObj.next) {
+            infoObj = await service.get(infoObj.next);
+            infoObj && (characters = [...characters, ...infoObj.results]);
+            this.setState({
+              peopleResults: characters
+            });
+          }
         }
-        this.setState({
-          peopleResults: characters
-        });
       });
   }
 
   render() {
-    console.log(this.state.peopleResults)
     return (
       <div className='container-fluid'>
         <div className='row'>

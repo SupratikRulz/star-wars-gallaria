@@ -15,7 +15,6 @@ export default class SearchResultContainer extends Component {
         {searchKey ? <div>Searching for characters with "{searchKey}" in name</div> : <div>Showing All Characters</div>}
       </div>
       <div className='row search-result-container'>
-        
         {
           loadingCharacters ?
             (

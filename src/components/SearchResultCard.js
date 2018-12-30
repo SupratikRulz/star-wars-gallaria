@@ -29,7 +29,6 @@ export default class SearchResultCard extends Component {
       mass,
       hair_color,
       skin_color,
-      eye_color,
       show
     } = this.props;
     let {
@@ -110,24 +109,19 @@ export default class SearchResultCard extends Component {
     let {films, vehicles, starships} = this.props;
     let updatedFilms = [],
       updatedVehicles = [],
-      updatedStarships = [],
-      updatedFilmsFetched = true,
-      updatedVehiclesFetched = true,
-      updatedStarshipsFetched = true,
-      allDataFetchedSuccessfully;
+      updatedStarships = [];
+
     for(let i = 0; i < films.length; ++i) {
-      updatedFilms[i] = await service.get(films[i], {signal: this.signal}).catch(err => {console.log('Data fetching aborted'); updatedFilmsFetched = false;});
+      updatedFilms[i] = await service.get(films[i], {signal: this.signal});
     }
     for(let i = 0; i < vehicles.length; ++i) {
-      updatedVehicles[i] = await service.get(vehicles[i], {signal: this.signal}).catch(err => {console.log('Data fetching aborted'); updatedVehiclesFetched = false;});
+      updatedVehicles[i] = await service.get(vehicles[i], {signal: this.signal});
     }
     for(let i = 0; i < starships.length; ++i) {
-      updatedStarships[i] = await service.get(starships[i], {signal: this.signal}).catch(err => {console.log('Data fetching aborted'); updatedStarshipsFetched = false;});
+      updatedStarships[i] = await service.get(starships[i], {signal: this.signal});
     }
 
-    allDataFetchedSuccessfully = updatedFilmsFetched && updatedVehiclesFetched && updatedStarshipsFetched;
-
-    allDataFetchedSuccessfully && this.setState({
+    this.setState({
       films: updatedFilms,
       vehicles: updatedVehicles,
       starships: updatedStarships,
