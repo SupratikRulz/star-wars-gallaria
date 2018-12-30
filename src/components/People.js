@@ -3,9 +3,11 @@ import React, { Component } from 'react';
 import SearchBox from './SearchBox';
 import SearchResultContainer from './SearchResultContainer';
 
+
 import { service } from './../services/api';
 
 import './css/People.css';
+import logo from './../starwars-logo.png';
 
 export default class People extends Component {
   constructor(props) {
@@ -13,41 +15,25 @@ export default class People extends Component {
 
     this.state = {
       fetchURI: 'https://swapi.co/api/people/?format=json',
-      peopleResults: []
+      peopleResults: [],
+      searchKey: ''
     }
   }
 
   componentDidMount() {
     service
       .get(this.state.fetchURI)
-      .then(async data => {
-        let characters = data.results,
-          filteredCharacters = [];
-        for(let _character of characters) {
-          let characterObj = Object.assign({}, _character);
-          for(let key in _character) {
-            if(_character[key] instanceof Array) {
-              for(let index = 0; index < _character[key].length; ++index) {
-                let url = _character[key][index];
-                let _urlData = await service.get(url);
-                characterObj[key][index] = _urlData;
-              }
-            }
-          }
-          filteredCharacters.push(characterObj);
+      .then(async _data => {
+        let infoObj = _data;
+        let characters = [...infoObj.results];
+        while (infoObj.next) {
+          infoObj = await service.get(infoObj.next);
+          characters = [...characters, ...infoObj.results];
         }
-        
-        return {
-          peopleResults: filteredCharacters,
-          fetchURI: data.next
-        }
-      })
-      .then(_data => {
         this.setState({
-          peopleResults: [...this.state.peopleResults, ..._data.peopleResults],
-          fetchURI: _data.fetchURI
-        })
-      })
+          peopleResults: characters
+        });
+      });
   }
 
   render() {
@@ -56,13 +42,18 @@ export default class People extends Component {
       <div className='container-fluid'>
         <div className='row'>
           <div className='col-4 search-box-height'>
-            <SearchBox />
+            <img src={logo} alt='Star Wars'/>
+            <SearchBox updateSearchKey={this.updateSearchKey}/>
           </div>
           <div className='col-8'>
-            <SearchResultContainer characters={this.state.peopleResults}/>
+            <SearchResultContainer characters={this.state.peopleResults} searchKey={this.state.searchKey}/>
           </div>
         </div>
       </div>
     )
+  }
+
+  updateSearchKey = searchKey => {
+    this.setState({searchKey})
   }
 }

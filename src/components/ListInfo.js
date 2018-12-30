@@ -20,7 +20,7 @@ export default class ListInfo extends Component {
                 displayString = displayString.replace('$_' + key, obj[key])
               }
               return (
-                <div key={index}>
+                <div key={index+displayString}>
                   {displayString}
                 </div>
               )

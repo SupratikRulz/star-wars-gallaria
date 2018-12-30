@@ -1,24 +1,30 @@
 .search-result-card {
   margin-top: 10px;
+  transition: transform .1s;
+}
+
+.search-result-card-header:hover {
+  transform: scale(1.1);
 }
 
 .search-result-card-container {
-  background: #fff4e0;
-  color: #000044;
+  background: #404b69;
+  color: #ede68a;
   padding: 0px 0px;
-  border-radius: 3px;
 }
 
 .search-result-card-header {
+  transition: transform .1s;
   cursor: pointer;
   user-select: none;
   padding: 10px 0px;
   font-size: 1.25rem;
-  background: #fff4e0;
+  background: #404b69;
+  border-radius: 5px;
 }
 
 .details {
-  border-top: 1px solid #000044;
+  border-top: 1px solid #282c34;
   animation: slide-up 0.3s ease;
   padding-bottom: 15px; 
 }

@@ -1,9 +1,11 @@
 .info-header {
   margin-top: 5px;
   font-size: 1.2rem;
+  color: #62a388;
 }
 
 .info {
   margin-left: 10px;
   text-align: left;
+  color: #b9d2d2;
 }
