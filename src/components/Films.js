@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import Card from './Card';
-import Loader from './Loader';
+import Card from './atomic/Card';
+import Loader from './atomic/Loader';
 
 import logo from './../starwars-logo.png';
 

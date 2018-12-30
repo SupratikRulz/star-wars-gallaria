@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import ListInfo from './ListInfo';
-import Loader from './Loader';
+import ListInfo from './atomic/ListInfo';
+import Loader from './atomic/Loader';
 
 import './css/SearchResultCard.css';
 

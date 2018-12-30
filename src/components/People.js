@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import SearchBox from './SearchBox';
+import SearchBox from './atomic/SearchBox';
 import SearchResultContainer from './SearchResultContainer';
 
 
@@ -44,7 +44,11 @@ export default class People extends Component {
         <div className='row'>
           <div className='col-4 search-box-height'>
             <img src={logo} alt='Star Wars' className='search-logo'/>
-            <SearchBox updateSearchKey={this.updateSearchKey}/>
+            <SearchBox
+              updateSearchKey={this.updateSearchKey}
+              searchTitle='Hey fellas! Search your favorite heros here.'
+              placeholder='Search here...'
+            />
           </div>
           <div className='col-8'>
             <SearchResultContainer characters={this.state.peopleResults} searchKey={this.state.searchKey}/>

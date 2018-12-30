@@ -23,9 +23,6 @@ input[type=text] {
 }
 
 input[type=text]:focus {
-  border: 5px solid #5fb9b0;
+  border: 2px solid #5fb9b0;
   outline: none;
-  /* background-color: #ede68a; */
-  opacity: 1;
-  /* color: #5fb9b0; */
 }

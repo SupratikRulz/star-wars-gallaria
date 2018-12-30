@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import SearchResultCard from './SearchResultCard';
-import Loader from './Loader';
+import Loader from './atomic/Loader';
 
 import './css/SearchResultContainer.css';
 
