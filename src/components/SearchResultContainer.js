@@ -10,8 +10,12 @@ export default class SearchResultContainer extends Component {
     let {characters, searchKey} = this.props,
       loadingCharacters = characters.length === 0;
     return (
-      <div className='row search-result-container'>
+      <>
+      <div className='mt-50'>
         {searchKey ? <div>Searching for characters with "{searchKey}" in name</div> : <div>Showing All Characters</div>}
+      </div>
+      <div className='row search-result-container'>
+        
         {
           loadingCharacters ?
             (
@@ -27,6 +31,7 @@ export default class SearchResultContainer extends Component {
               })
         }
       </div>
+      </>
     )
   }
 }

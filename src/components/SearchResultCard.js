@@ -50,25 +50,14 @@ export default class SearchResultCard extends Component {
           {
             this.state.expanded &&
               <div className='col-12 details'>
-                <div className='info-header'>
-                  Basic Information:
-                </div>
-                <p className='info'>
-                  Birth Year: {birth_year}
-                  <br></br>
-                  Gender: {gender}
-                  <br></br>
-                  Height: {height}
-                  <br></br>
-                  Mass: {mass}
-                  <br></br>
-                  Hair Color: {hair_color}
-                  <br></br>
-                  Skin Color: {skin_color}
-                  <br></br>
-                  Eye Color: {eye_color}
-                  <br></br>
-                </p>
+                <ListInfo
+                  headerName='Basic Information'
+                  displayFormat='Born in $_birth_year with $_hair_color hair and $_skin_color skin. Gender is $_gender and currently height and mass is $_height and $_mass respectively.'
+                  keysArr={['birth_year', 'gender', 'height', 'mass', 'hair_color', 'skin_color']}
+                  jsonArr={[{
+                    birth_year, gender, height, mass, hair_color, skin_color
+                  }]}
+                />
                 {
                   dataFetched ?
                     (

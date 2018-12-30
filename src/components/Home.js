@@ -1,12 +1,10 @@
-import React, { Component } from 'react';
-
-import logo from './../starwars-logo.png';
+import React, { Component } from 'react'
 
 export default class Home extends Component {
   render() {
     return (
-      <div className="container-fluid">
-        <img src={logo} />
+      <div>
+        
       </div>
     )
   }

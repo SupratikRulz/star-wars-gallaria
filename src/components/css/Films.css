@@ -1,0 +1,27 @@
+.logo {
+  width: 100%;
+  height: auto;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.m-10 {
+  margin: 10px;
+}
+
+.p-10 {
+  padding: 10px;
+  text-align: justify;
+  user-select: none;
+}
+
+.film-description {
+  color: #b9d2d2;
+  padding: 10px 0px;
+}
+
+.director, .producer, .release-date {
+  color: #62a388;
+}
