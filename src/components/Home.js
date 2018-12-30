@@ -17,7 +17,7 @@ export default class Home extends Component {
               </div>
             )}
             cardContentClasses='color-white'
-            cardClasses='col-11 m-20-auto'
+            cardClasses='col-11 m-30-auto'
           />
         </div>
         <div className='row'>
@@ -25,7 +25,7 @@ export default class Home extends Component {
             title='ABOUT PROJECT'
             content={(<><br></br><p className='about-project'>This project is made using React. It was bootstrapped with Create React App. The source code of this could be found in this <a href='https://github.com/SupratikRulz/star-wars-gallaria'>github</a> repository. This also makes use of <a href='https://swapi.co/'>swapi.co</a> apis for fetching data related to <a href='https://www.starwars.com/'>Star Wars</a>. This project aims at providing information to user about the star war films. If user is much familiar wih star wars, then user can also search for his favorite hero and get to know more about hero.</p></>)}
             cardContentClasses='color-white'
-            cardClasses='col-11 m-20-auto'
+            cardClasses='col-11 m-30-auto'
           />
         </div>
       </div>
