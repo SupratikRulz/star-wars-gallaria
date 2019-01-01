@@ -8,11 +8,6 @@ import logo from './../starwars-logo.png';
 import './css/Films.css';
 
 export default class Films extends Component {
-
-  componentDidMount() {
-    this.props.fetchFilms();
-  }
-  
   render() {
     let films = this.props.films,
       dataLoaded = films.length > 0;
@@ -35,7 +30,7 @@ export default class Films extends Component {
                             content={this.getFilmContent(_film)}
                           />
                         </div>
-                        );
+                );
               })
             ) : (
               <div className='col-12'>
