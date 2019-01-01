@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import {service} from './../services/api';
+import PropTypes from 'prop-types';
 import ListInfo from './atomic/ListInfo';
 import Loader from './atomic/Loader';
 import './css/SearchResultCard.css';
-import {service} from './../services/api';
 
 export default class SearchResultCard extends Component {
   constructor(props) {
@@ -18,10 +19,12 @@ export default class SearchResultCard extends Component {
   }
 
   componentDidMount = () => {
+    // When this component is mounted, then set this flag to true.
     this._mounted = true;
   }
   
   componentWillUnmount = () => {
+    // When this component will dispose, then set this flag to false.
     this._mounted = false;
   }
 
@@ -52,6 +55,7 @@ export default class SearchResultCard extends Component {
             { name }
           </div>
           {
+            // Display the character detail information if it's expanded state is true
             this.state.expanded &&
               <div className='col-12 details'>
                 <ListInfo
@@ -63,6 +67,7 @@ export default class SearchResultCard extends Component {
                   }]}
                 />
                 {
+                  // If data is fetched then show the details else display the loader
                   dataFetched ?
                     (
                       <div>
@@ -99,6 +104,13 @@ export default class SearchResultCard extends Component {
     )
   }
 
+
+  /**
+   * Function to fetch data initially and toggle state of expand,
+   * such that information of the character can be displayed or hidden.
+   * 
+   * @memberOf SearchResultCard
+   */
   clickHandler = () => {
     !this.state.dataFetched && this.fetchDataAndUpdateState();
     this.setState({
@@ -106,12 +118,22 @@ export default class SearchResultCard extends Component {
     });
   }
 
+
+  /**
+   * Function to fetch the user data of
+   * films appeared in, vehicles owned and starships owned.
+   * On successful fetching of data, update the state of the component
+   * such that re-fetching of data is not required when it's clicked again.
+   * 
+   * @memberOf SearchResultCard
+   */
   fetchDataAndUpdateState = async () => {
     let {films, vehicles, starships} = this.props;
     let updatedFilms = [],
       updatedVehicles = [],
       updatedStarships = [];
 
+    // Fetch the user data of films, vehicles and starships.
     for(let i = 0; i < films.length; ++i) {
       updatedFilms[i] = await service.get(films[i]);
     }
@@ -122,6 +144,9 @@ export default class SearchResultCard extends Component {
       updatedStarships[i] = await service.get(starships[i]);
     }
 
+    // Update the state of the component only when the component is mounted.
+    // If for any reason the component gets disposed during fetching of data,
+    // then do not update the state.
     this._mounted && this.setState({
       films: updatedFilms,
       vehicles: updatedVehicles,
@@ -129,4 +154,18 @@ export default class SearchResultCard extends Component {
       dataFetched: true
     });
   }
+}
+
+SearchResultCard.propTypes = {
+  name: PropTypes.string,
+  birth_year: PropTypes.string,
+  gender: PropTypes.string,
+  height: PropTypes.string,
+  mass: PropTypes.string,
+  hair_color: PropTypes.string,
+  skin_color: PropTypes.string,
+  show: PropTypes.bool.isRequired,
+  films: PropTypes.array.isRequired,
+  vehicles: PropTypes.array.isRequired,
+  starships: PropTypes.array.isRequired
 }
