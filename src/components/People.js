@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
+import logo from './../starwars-logo.png';
 import SearchBox from './atomic/SearchBox';
 import SearchResultHolder from './container/SearchResultHolderContainer';
-
-
 import './css/People.css';
-import logo from './../starwars-logo.png';
 
 export default class People extends Component {
   render() {
@@ -27,4 +25,8 @@ export default class People extends Component {
       </div>
     )
   }
+}
+
+People.propTypes = {
+  updateSearch: PropTypes.func.isRequired
 }
