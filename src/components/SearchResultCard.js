@@ -94,10 +94,6 @@ export default class SearchResultCard extends Component {
     )
   }
 
-  toggleExpand = () => {
-    this.setState({expanded: !this.state.expanded});
-  }
-
   clickHandler = e => {
     !this.state.dataFetched && this.fetchDataAndUpdateState();
     this.setState({
