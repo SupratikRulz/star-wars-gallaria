@@ -1,14 +1,14 @@
 import { service } from './../services/api';
 import config from '../config.json';
 
-import { ADD_PEOPLE } from './../constants';
+import { ADD_PEOPLE, UPDATE_SEARCH_KEY } from './../constants';
 
 const addCharacters = (characters = []) => ({
   type: ADD_PEOPLE,
   characters
 });
 
-export const fetchCharactersAndStore = () => dispatch => {
+export const fetchCharactersAndDispatch = () => dispatch => {
   service
     .get(config.CHARACTER_URL)
     .then(async _data => {
@@ -23,3 +23,8 @@ export const fetchCharactersAndStore = () => dispatch => {
       }
     });
 }
+
+export const setSearchKey = searchKey => ({
+  type: UPDATE_SEARCH_KEY,
+  searchKey
+});

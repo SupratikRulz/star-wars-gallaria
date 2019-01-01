@@ -8,8 +8,8 @@ const addFilms = (films = []) => ({
   films
 });
 
-export const fetchFilmsAndStore = () => dispatch => {
+export const fetchFilmsAndDispatch = () => dispatch => {
   service
     .get(config.FILM_URL)
     .then(_data => dispatch(addFilms(_data.results)));
-}
+};
