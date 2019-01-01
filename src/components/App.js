@@ -3,12 +3,17 @@ import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 
 import Navbar from './Navbar';
 import Home from './Home';
-import People from './People';
-import Films from './container/FilmsContainer';
+import People from './container/PeopleContainer';
+import Films from './Films';
 
 import './css/App.css';
 
 class App extends Component {
+  componentDidMount() {
+    this.props.fetchFilms();
+    this.props.fetchCharacters();
+  }
+
   render() {
     return (
       <BrowserRouter>
@@ -18,7 +23,7 @@ class App extends Component {
             <Route exact path='/' component={Home}/>
             <Route path='/home' component={Home}/>
             <Route path='/people' component={People}/>
-            <Route path='/films' component={Films}/>
+            <Route path='/films' render={() => <Films films={this.props.films}/>}/>
             <Redirect from='/' to='/home'/>
           </Switch>
         </div>
