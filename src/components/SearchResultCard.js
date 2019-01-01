@@ -8,6 +8,7 @@ import './css/SearchResultCard.css';
 export default class SearchResultCard extends Component {
   constructor(props) {
     super(props);
+    // Define the initial state of the component
     this.state = {
       expanded: false,
       films: [],
@@ -46,8 +47,9 @@ export default class SearchResultCard extends Component {
       dataFetched
     } = this.state;
     return (
-      <div className='col-12 search-result-card' style={{'display': show ? 'block': 'none'}}
-          onClick={this.clickHandler}
+      <div className='col-12 search-result-card'
+        style={{'display': show ? 'block': 'none'}}
+        onClick={this.clickHandler}
       >
         <div className='search-result-card-container row'>
           <div 

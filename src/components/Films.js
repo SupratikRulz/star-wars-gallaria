@@ -46,12 +46,12 @@ export default class Films extends Component {
 
   
   /**
-   * Function to return a React Element containing film information
+   * Function to return a React Element(node) containing film information
    * such as film description, director, producer and it's release date.
    * 
    * @param {Object} film - film object that contains film information.
    * @memberOf Films
-   * @returns {React Element} - React Element containing film information.
+   * @returns {React Element} - React Element(node) containing film information.
    */
   getFilmContent = film => {
     return (

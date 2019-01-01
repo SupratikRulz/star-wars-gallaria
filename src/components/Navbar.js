@@ -5,7 +5,7 @@ export default class Navbar extends Component {
   render() {
     return (
       <nav className="navbar navbar-expand-sm sticky-top navbar-dark bg-dark">
-        <div className="navbar-brand">Star Wars Gallaria</div>
+        <div className="navbar-brand">Star Wars Galleria</div>
         <ul className="navbar-nav ml-auto">
           <li className="nav-item">
             <NavLink className="nav-link" to="/home">Home</NavLink>

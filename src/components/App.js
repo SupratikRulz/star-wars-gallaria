@@ -23,7 +23,7 @@ class App extends Component {
         <div className="App">
           <Navbar />
           {
-            /* Routes definitions:
+            /* ||| Routes Definitions |||
             *  /       > will direct to Home component
             *  /home   > will direct to Home component
             *  /people > will direct to People component
