@@ -7,14 +7,22 @@ import {service} from './../services/api';
 export default class SearchResultCard extends Component {
   constructor(props) {
     super(props);
-    this.clickHandler = this.clickHandler.bind(this);
     this.state = {
       expanded: false,
       films: [],
       vehicles: [],
       starships: [],
       dataFetched: false
-    }
+    };
+    this._mounted = false;
+  }
+
+  componentDidMount = () => {
+    this._mounted = true;
+  }
+  
+  componentWillUnmount = () => {
+    this._mounted = false;
   }
 
   render() {
@@ -91,7 +99,7 @@ export default class SearchResultCard extends Component {
     )
   }
 
-  clickHandler = e => {
+  clickHandler = () => {
     !this.state.dataFetched && this.fetchDataAndUpdateState();
     this.setState({
       expanded: !this.state.expanded
@@ -114,7 +122,7 @@ export default class SearchResultCard extends Component {
       updatedStarships[i] = await service.get(starships[i]);
     }
 
-    this.setState({
+    this._mounted && this.setState({
       films: updatedFilms,
       vehicles: updatedVehicles,
       starships: updatedStarships,
