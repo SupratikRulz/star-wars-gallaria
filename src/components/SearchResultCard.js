@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-
 import ListInfo from './atomic/ListInfo';
 import Loader from './atomic/Loader';
-
 import './css/SearchResultCard.css';
-
 import {service} from './../services/api';
 
 export default class SearchResultCard extends Component {
@@ -108,13 +105,13 @@ export default class SearchResultCard extends Component {
       updatedStarships = [];
 
     for(let i = 0; i < films.length; ++i) {
-      updatedFilms[i] = await service.get(films[i], {signal: this.signal});
+      updatedFilms[i] = await service.get(films[i]);
     }
     for(let i = 0; i < vehicles.length; ++i) {
-      updatedVehicles[i] = await service.get(vehicles[i], {signal: this.signal});
+      updatedVehicles[i] = await service.get(vehicles[i]);
     }
     for(let i = 0; i < starships.length; ++i) {
-      updatedStarships[i] = await service.get(starships[i], {signal: this.signal});
+      updatedStarships[i] = await service.get(starships[i]);
     }
 
     this.setState({
