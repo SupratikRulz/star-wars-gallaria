@@ -5,32 +5,16 @@ import Loader from './atomic/Loader';
 
 import logo from './../starwars-logo.png';
 
-import { service } from "./../services/api";
-
 import './css/Films.css';
 
 export default class Films extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      filmsURL: 'https://swapi.co/api/films/?format=json',
-      filmsData: []
-    }
-  }
 
   componentDidMount() {
-    service
-      .get(this.state.filmsURL)
-      .then(_data => {
-        this.setState({
-          filmsData: _data.results
-        });
-      });
+    this.props.fetchFilms();
   }
   
   render() {
-    let films = this.state.filmsData,
+    let films = this.props.films,
       dataLoaded = films.length > 0;
     return (
       <div className="container-fluid">
