@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import Navbar from './Navbar';
 import Home from './Home';
 import People from './People';
-import Films from './Films';
+import Films from './container/FilmsContainer';
 
 import './css/App.css';
 
