@@ -26,5 +26,5 @@ export const fetchCharactersAndDispatch = () => dispatch => {
 
 export const setSearchKey = searchKey => ({
   type: UPDATE_SEARCH_KEY,
-  searchKey
+  searchKey: searchKey.toLowerCase()
 });
