@@ -1,23 +1,28 @@
 import React, { Component } from 'react';
-
 import ListInfo from './atomic/ListInfo';
 import Loader from './atomic/Loader';
-
 import './css/SearchResultCard.css';
-
 import {service} from './../services/api';
 
 export default class SearchResultCard extends Component {
   constructor(props) {
     super(props);
-    this.clickHandler = this.clickHandler.bind(this);
     this.state = {
       expanded: false,
       films: [],
       vehicles: [],
       starships: [],
       dataFetched: false
-    }
+    };
+    this._mounted = false;
+  }
+
+  componentDidMount = () => {
+    this._mounted = true;
+  }
+  
+  componentWillUnmount = () => {
+    this._mounted = false;
   }
 
   render() {
@@ -94,11 +99,7 @@ export default class SearchResultCard extends Component {
     )
   }
 
-  toggleExpand = () => {
-    this.setState({expanded: !this.state.expanded});
-  }
-
-  clickHandler = e => {
+  clickHandler = () => {
     !this.state.dataFetched && this.fetchDataAndUpdateState();
     this.setState({
       expanded: !this.state.expanded
@@ -112,16 +113,16 @@ export default class SearchResultCard extends Component {
       updatedStarships = [];
 
     for(let i = 0; i < films.length; ++i) {
-      updatedFilms[i] = await service.get(films[i], {signal: this.signal});
+      updatedFilms[i] = await service.get(films[i]);
     }
     for(let i = 0; i < vehicles.length; ++i) {
-      updatedVehicles[i] = await service.get(vehicles[i], {signal: this.signal});
+      updatedVehicles[i] = await service.get(vehicles[i]);
     }
     for(let i = 0; i < starships.length; ++i) {
-      updatedStarships[i] = await service.get(starships[i], {signal: this.signal});
+      updatedStarships[i] = await service.get(starships[i]);
     }
 
-    this.setState({
+    this._mounted && this.setState({
       films: updatedFilms,
       vehicles: updatedVehicles,
       starships: updatedStarships,

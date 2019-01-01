@@ -5,7 +5,7 @@ import Loader from './atomic/Loader';
 
 import './css/SearchResultContainer.css';
 
-export default class SearchResultContainer extends Component {
+export default class SearchResultHolder extends Component {
   render() {
     let {characters, searchKey} = this.props,
       loadingCharacters = characters.length === 0;

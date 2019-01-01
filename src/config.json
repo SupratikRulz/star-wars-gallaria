@@ -1,3 +1,4 @@
 {
-  "SWAPI_URL": "https://swapi.co/api/"
+  "FILM_URL": "https://swapi.co/api/films/?format=json",
+  "CHARACTER_URL": "https://swapi.co/api/people/?format=json"
 }
