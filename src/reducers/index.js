@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
-import filmsReducer from './films.reducer';
-import peopleReducer from './people.reducer';
+import films from './films.reducer';
+import people from './people.reducer';
 
 
 const rootReducer = combineReducers({
-  filmsReducer,
-  peopleReducer
+  films,
+  people
 });
 
 export { rootReducer };

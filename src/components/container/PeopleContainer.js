@@ -3,7 +3,7 @@ import People from './../People';
 import { setSearchKey } from './../../actions/people.action';
 
 const mapStateToProps = state => ({
-  searchKey: state.peopleReducer.searchKey
+  searchKey: state.people.searchKey
 });
 
 const mapDispatchToProps = dispatch => ({
