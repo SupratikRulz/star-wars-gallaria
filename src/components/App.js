@@ -5,7 +5,6 @@ import Navbar from './Navbar';
 import Home from './Home';
 import People from './container/PeopleContainer';
 import Films from './Films';
-
 import './css/App.css';
 
 class App extends Component {

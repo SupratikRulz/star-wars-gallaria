@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
+import logo from './../starwars-logo.png';
 import Card from './atomic/Card';
 import Loader from './atomic/Loader';
-
-import logo from './../starwars-logo.png';
-
 import './css/Films.css';
 
 export default class Films extends Component {
   render() {
     let films = this.props.films,
       dataLoaded = films.length > 0;
+
     return (
       <div className="container-fluid">
         <div className='row'>
@@ -20,16 +19,18 @@ export default class Films extends Component {
         </div>
         <div className='row' style={{padding: '10px'}}>
           {
+            // Display the cards with film information when film data is present(i.e. loaded)
+            // else display the loader
             dataLoaded ? (
               films.map((_film, index) => {
-                return  (
-                        <div className='col-4 mt-20' key={_film.title + index}>
-                          <Card
-                            cardClasses='row p-10 m-10'
-                            title={_film.title}
-                            content={this.getFilmContent(_film)}
-                          />
-                        </div>
+                return (
+                  <div className='col-4 mt-20' key={_film.title + index}>
+                    <Card
+                      cardClasses='row p-10 m-10'
+                      title={_film.title}
+                      content={this.getFilmContent(_film)}
+                    />
+                  </div>
                 );
               })
             ) : (
@@ -43,7 +44,16 @@ export default class Films extends Component {
     )
   }
 
-  getFilmContent = (film) => {
+  
+  /**
+   * Function to return a React Element containing film information
+   * such as film description, director, producer and it's release date.
+   * 
+   * @param {Object} film - film object that contains film information.
+   * @memberOf Films
+   * @returns {React Element} - React Element containing film information.
+   */
+  getFilmContent = film => {
     return (
       <>
         <div className='film-description'>
@@ -61,4 +71,8 @@ export default class Films extends Component {
       </>
     )
   }
+}
+
+Films.propTypes = {
+  films: PropTypes.array.isRequired
 }
