@@ -65,6 +65,7 @@ export default class SearchResultCard extends Component {
                   jsonArr={[{
                     birth_year, gender, height, mass, hair_color, skin_color
                   }]}
+                  separator='$_'
                 />
                 {
                   // If data is fetched then show the details else display the loader
@@ -76,18 +77,21 @@ export default class SearchResultCard extends Component {
                           displayFormat={'- $_title released on $_release_date and directed by $_director'}
                           keysArr={['title', 'release_date', 'director']}
                           jsonArr={films}
+                          separator='$_'
                         />
                         <ListInfo
                           headerName={'Vehicles Owned:'}
                           displayFormat={'- $_name with cargo capacity $_cargo_capacity'}
                           keysArr={['name', 'cargo_capacity']}
                           jsonArr={vehicles}
+                          separator='$_'
                         />
                         <ListInfo
                           headerName={'Starships Owned:'}
                           displayFormat={'- $_name with cargo capacity $_cargo_capacity'}
                           keysArr={['name', 'cargo_capacity']}
                           jsonArr={starships}
+                          separator='$_'
                         />
                       </div>
                     ) : (
