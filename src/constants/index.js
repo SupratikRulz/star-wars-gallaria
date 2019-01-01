@@ -1,9 +1,11 @@
-export const initialState = {
-  films: [],
+export const filmInitialState = {
+  films: []
+}
+
+export const peopleInitialState = {
   characters: [],
-  searchKey: '',
-  searchCardStates: {}
-};
+  searchKey: ''
+}
 
 export const ADD_FILMS = 'ADD_FILMS';
 export const ADD_PEOPLE = 'ADD_PEOPLE';

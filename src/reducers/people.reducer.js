@@ -1,4 +1,4 @@
-import { ADD_PEOPLE, UPDATE_SEARCH_KEY, initialState } from '../constants';
+import { ADD_PEOPLE, UPDATE_SEARCH_KEY, peopleInitialState as initialState } from '../constants';
 
 const peopleReducer = (state = initialState, action) => {
   switch (action.type) {

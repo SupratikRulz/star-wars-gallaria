@@ -1,4 +1,4 @@
-import { ADD_FILMS, initialState } from '../constants';
+import { ADD_FILMS, filmInitialState as initialState } from '../constants';
 
 const filmsReducer = (state = initialState, action) => {
   switch (action.type) {
