@@ -1,5 +1,14 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Star Wars Galleria
 
+## About the project
+
+This project is made using React. This project makes use of swapi.co apis for fetching data related to Star Wars. This project aims at providing information to user about the star war films. If user is much familiar wih star wars, then user can also search for his favorite hero and get to know more about hero.
+
+Click on this [link](https://star-wars-galleria.netlify.com/) to see the live demo
+<br/>
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<br/><br/>
 ## Available Scripts
 
 In the project directory, you can run:
