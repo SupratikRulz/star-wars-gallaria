@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/cd75c74f-8d9b-402b-b64e-28b67387b148/deploy-status)](https://app.netlify.com/sites/star-wars-galleria/deploys)
+
 # Star Wars Galleria
 
 ## About the project
